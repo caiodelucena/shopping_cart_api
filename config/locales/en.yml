@@ -38,3 +38,7 @@ en:
       quantity_must_be_positive: "Quantity must be greater than zero"
     messages:
       cart_removed_empty: "Cart removed because it became empty"
+  jobs:
+    mark_cart_as_abandoned:
+      messages:
+        failed_to_remove_cart: "Failed to remove abandoned cart %{cart_id}: %{error_message}"

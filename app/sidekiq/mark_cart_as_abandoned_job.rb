@@ -26,7 +26,9 @@ class MarkCartAsAbandonedJob
     carts.find_each do |cart|
       cart.remove_if_abandoned
     rescue StandardError => e
-      Rails.logger.error "Failed to remove abandoned cart #{cart.id}: #{e.message}"
+      Rails.logger.error I18n.t('jobs.mark_cart_as_abandoned.messages.failed_to_remove_cart',
+                                cart_id: cart.id,
+                                error_message: e.message)
     end
   end
 end

@@ -19,6 +19,7 @@ gem 'guard'
 gem 'guard-livereload', require: false
 
 gem 'pry', '~> 0.15.0'
+gem 'figaro', '~> 1.2'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri windows]

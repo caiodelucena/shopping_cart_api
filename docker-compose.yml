@@ -26,6 +26,8 @@ services:
             - redis
         ports:
         - '3000:3000'
+        env_file:
+            - ./config/application.yml
         environment:
             - DATABASE_URL=postgresql://postgres:password@postgres:5432/shopping_cart_development
             - REDIS_URL=redis://redis:6379/0
@@ -37,6 +39,8 @@ services:
         depends_on:
             - postgres
             - redis
+        env_file:
+            - ./config/application.yml
         environment:
             - DATABASE_URL=postgresql://postgres:password@postgres:5432/shopping_cart_development
             - REDIS_URL=redis://redis:6379/0
@@ -48,6 +52,8 @@ services:
         depends_on:
             - postgres
             - redis
+        env_file:
+            - ./config/application.yml
         environment:
             - DATABASE_URL=postgresql://postgres:password@postgres:5432/shopping_cart_test
             - REDIS_URL=redis://redis:6379/0

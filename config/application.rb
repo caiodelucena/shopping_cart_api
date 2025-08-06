@@ -32,5 +32,9 @@ module Store
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use config.session_store, config.session_options
     config.active_job.queue_adapter = :sidekiq
+
+    # Configuração de internacionalização
+    config.i18n.default_locale = :en
+    config.i18n.available_locales = [:en]
   end
 end

@@ -29,3 +29,12 @@
 
 en:
   hello: "Hello world"
+  carts:
+    errors:
+      cart_not_found: "Cart not found"
+      product_not_found: "Product not found"
+      product_already_in_cart: "Product already exists in cart. Use POST /cart/add_item to update quantity"
+      product_not_found_in_cart: "Product not found in cart"
+      quantity_must_be_positive: "Quantity must be greater than zero"
+    messages:
+      cart_removed_empty: "Cart removed because it became empty"

@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-    db:
+    postgres:
         image: postgres:16-alpine
         environment:
           - POSTGRES_USER=postgres
@@ -17,17 +17,40 @@ services:
         volumes:
         - redis_data:/data  
     web:
-        ## TODO
-    test:
         build: .
-        command: bundle exec rspec
+        command: bash -c "bundle exec rails db:reset db:migrate db:seed && bundle exec rails server -b 0.0.0.0"
         volumes:
             - .:/rails
         depends_on:
-            - db
-            - redis 
+            - postgres
+            - redis
+        ports:
+        - '3000:3000'
         environment:
-            - DATABASE_URL: postgresql://postgres:password@db:5432/myapp_test
-            - REDIS_URL: redis://redis:6379/0
+            - DATABASE_URL=postgresql://postgres:password@postgres:5432/shopping_cart_development
+            - REDIS_URL=redis://redis:6379/0
+    sidekiq:
+        build: .
+        command: bundle exec sidekiq
+        volumes:
+            - .:/rails
+        depends_on:
+            - postgres
+            - redis
+        environment:
+            - DATABASE_URL=postgresql://postgres:password@postgres:5432/shopping_cart_development
+            - REDIS_URL=redis://redis:6379/0
+    test:
+        build: .
+        command: bash -c "RAILS_ENV=test bundle exec rails db:reset db:migrate db:seed && RAILS_ENV=test bundle exec rspec"
+        volumes:
+            - .:/rails
+        depends_on:
+            - postgres
+            - redis
+        environment:
+            - DATABASE_URL=postgresql://postgres:password@postgres:5432/shopping_cart_test
+            - REDIS_URL=redis://redis:6379/0
 volumes:
     postgres13:
+    redis_data:

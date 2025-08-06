@@ -1,20 +1,3 @@
-# Desafio técnico e-commerce
-
-## Nossas expectativas
-
-A equipe de engenharia da RD Station tem alguns princípios nos quais baseamos nosso trabalho diário. Um deles é: projete seu código para ser mais fácil de entender, não mais fácil de escrever.
-
-Portanto, para nós, é mais importante um código de fácil leitura do que um que utilize recursos complexos e/ou desnecessários.
-
-O que gostaríamos de ver:
-
-- O código deve ser fácil de ler. Clean Code pode te ajudar.
-- Notas gerais e informações sobre a versão da linguagem e outras informações importantes para executar seu código.
-- Código que se preocupa com a performance (complexidade de algoritmo).
-- O seu código deve cobrir todos os casos de uso presentes no README, mesmo que não haja um teste implementado para tal.
-- A adição de novos testes é sempre bem-vinda.
-- Você deve enviar para nós o link do repositório público com a aplicação desenvolvida (GitHub, BitBucket, etc.).
-
 ## O Desafio - Carrinho de compras
 O desafio consiste em uma API para gerenciamento do um carrinho de compras de e-commerce.
 
@@ -191,8 +174,20 @@ A aplicação já possui um Dockerfile, que define como a aplicação deve ser c
 
 ### Como executar o projeto
 
+## Executando a app com docker
+Dado que todas o Docker e todas as dependências estão instaladas:
+
+Inicializar aplicação (Completa):
+```bash
+docker compose up
+```
+
+Para rodas apenas os testes:
+```bash
+docker compose run test
+```
 ## Executando a app sem o docker
-Dado que todas as as ferramentas estão instaladas e configuradas:
+Dado que todas as ferramentas estão instaladas e configuradas:
 
 Instalar as dependências do:
 ```bash
@@ -213,6 +208,3 @@ Executar os testes:
 ```bash
 bundle exec rspec
 ```
-
-### Como enviar seu projeto
-Salve seu código em um versionador de código (GitHub, GitLab, Bitbucket) e nos envie o link publico. Se achar necessário, informe no README as instruções para execução ou qualquer outra informação relevante para correção/entendimento da sua solução.
